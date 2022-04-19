@@ -118,7 +118,7 @@ namespace Net.Bertware.Bukkitgui2.AddOn.Starter
 
 			// Add options for installed java versions
 			CBJavaVersion.Items.Clear();
-			if (JavaApi.IsInstalled(JavaVersion.Jre6X32))
+			/*if (JavaApi.IsInstalled(JavaVersion.Jre6X32))
 			{
 				CBJavaVersion.Items.Add("Java 6 - 32 bit");
 			}
@@ -141,7 +141,8 @@ namespace Net.Bertware.Bukkitgui2.AddOn.Starter
 			if (JavaApi.IsInstalled(JavaVersion.Jre8X64))
 			{
 				CBJavaVersion.Items.Add("Java 8 - 64 bit");
-			}
+			}*/
+			JavaApi.GetInstalledJava().ForEach(s => CBJavaVersion.Items.Add(s));
 
 			int javaType = Config.ReadInt("Starter", "JavaVersion", 0);
 			if (javaType < CBJavaVersion.Items.Count)
@@ -302,12 +303,12 @@ namespace Net.Bertware.Bukkitgui2.AddOn.Starter
 		///     Get the selected java version
 		/// </summary>
 		/// <returns>The selected java version as enum</returns>
-		public JavaVersion GetSelectedJavaVersion()
+		public String GetSelectedJavaVersion()
 		{
-			if (CBJavaVersion.SelectedIndex < 0) return 0;
+			if (CBJavaVersion.SelectedIndex < 0) return "";
 
-			string selectedText = CBJavaVersion.SelectedItem.ToString();
-			if (Regex.IsMatch(selectedText, "(.*?)6(.*?)32"))
+			return  CBJavaVersion.SelectedItem.ToString();
+			/*if (Regex.IsMatch(selectedText, "(.*?)6(.*?)32"))
 			{
 				return JavaVersion.Jre6X32;
 			}
@@ -331,7 +332,7 @@ namespace Net.Bertware.Bukkitgui2.AddOn.Starter
 			{
 				return JavaVersion.Jre8X64;
 			}
-			return JavaVersion.Jre7X32;
+			return JavaVersion.Jre7X32;*/
 		}
 
 		/// <summary>

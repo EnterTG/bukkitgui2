@@ -191,7 +191,7 @@ namespace Net.Bertware.Bukkitgui2.AddOn.Starter
 		///     If this is an automated launch. Automated launches won't check for server updates and limit
 		///     popups.
 		/// </param>
-		public void LaunchServer(IMinecraftServer server, JavaVersion javaVersion, string jarFile, UInt32 minMem,
+		public void LaunchServer(IMinecraftServer server, String javaVersion, string jarFile, UInt32 minMem,
 			UInt32 maxMem, string defaultParameters = "", string defaultFlags = "", Boolean automated = false)
 		{
 			server.PrepareLaunch();
